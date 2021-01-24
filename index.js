@@ -18,12 +18,6 @@ let users = [
     },
 ];
 
-
-server.get("/", (request, response) => {
-    response.status(200).send('<h1>Hello</h1>');
-});
-
-
 server.post("/api/users", (req, res) => {   // POST new User
     const newUser= req.body; // needs express.json middleware to work
     newUser.id = shortid.generate()
@@ -49,7 +43,7 @@ server.delete("/api/users/:id", (req, res) => {     // DELETE user by user id
     const deleteId = users.find(h => h.id = id);
 
     users = users.filter(h => h.id !== id);
-    res.status(200).json(deleted)
+    res.status(200).json(deleteId)
 })
 
 server.put("/api/users/:id", (req, res) => {        // PUT new changes to user by id
